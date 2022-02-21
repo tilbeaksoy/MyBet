@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "457436925474",
+    "project_id": "mybet-cbd8a",
+    "storage_bucket": "mybet-cbd8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457436925474:android:68e39165aec99eb271847b",
+        "android_client_info": {
+          "package_name": "com.aksoy.mybet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "457436925474-k2pan5qgjoqqpa552vdud0e1pu5ssup2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aksoy.mybet",
+            "certificate_hash": "45053c6b6b42e9f94862f1082a92e9afb4827d00"
+          }
+        },
+        {
+          "client_id": "457436925474-a5t6jpubm0fm3oo1fdboolpqpbef2h4j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpR8HhbVCsI_7ExT1J3tiYqrt-6ET-JLo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457436925474-a5t6jpubm0fm3oo1fdboolpqpbef2h4j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

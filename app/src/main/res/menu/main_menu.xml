@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/sports_category"
+        android:icon="@drawable/ic_sport_categories"
+        android:title="Ligler" />
+    <item android:id="@+id/cart_categoory"
+        android:icon="@drawable/ic_cart"
+        android:title="Cüzdan" />
+    <item android:id="@+id/profile_category"
+        android:icon="@drawable/ic_profile"
+        android:title="Hesabım" />
+</menu>

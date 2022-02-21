@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.aksoy.mybet.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.aksoy.mybet.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/login_fragment" />
+
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.aksoy.mybet.fragments.SignUpFragment"
+        android:label="fragment_signup"
+        tools:layout="@layout/fragment_sign_up" />
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.aksoy.mybet.fragments.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.aksoy.mybet.fragments.CategoriesFragment"
+        android:label="fragment_categories"
+        tools:layout="@layout/fragment_categories" />
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.aksoy.mybet.fragments.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/cart_fragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.aksoy.mybet.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/profile_fragment" />
+    <fragment
+        android:id="@+id/categoriesDetailFragment"
+        android:name="com.aksoy.mybet.fragments.CategoriesDetailFragment"
+        android:label="fragment_categories_detail"
+        tools:layout="@layout/categories_detail_fragment" />
+
+</navigation>
