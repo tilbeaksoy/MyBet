@@ -1,10 +1,10 @@
 package com.aksoy.mybet.models
 
-class OddModel {
-    var key: String? = null
-    var homeTeam: String? = null
-    var homeTeamOdd: String? = null
-    var awayTeam: String? = null
-    var awayTeamOdd: String? = null
-    var price: Int? = null
-}
+class OddModel (
+    var sport_key: String? = null,
+    var sport_tittle: String? = null,
+    var homeTeam: String? = null,
+    var homeTeamPrice: String? = null,
+    var awayTeam: String? = null,
+    var awayTeamPrice: String? = null,
+)

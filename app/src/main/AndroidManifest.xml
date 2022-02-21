@@ -9,6 +9,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:fitsSystemWindows="true"
+        android:usesCleartextTraffic="true"
+        android:screenOrientation="portrait"
+        android:windowSoftInputMode="stateHidden|adjustPan"
         android:theme="@style/Theme.MyBet">
         <activity android:name=".MainActivity"
             android:exported="true">

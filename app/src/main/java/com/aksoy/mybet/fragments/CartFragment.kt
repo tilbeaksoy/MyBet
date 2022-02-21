@@ -53,7 +53,7 @@ class CartFragment : BaseFragment() , IOddsListLisitener, ICartLoadListener  {
         viewModel = ViewModelProvider(this).get(CartViewModel::class.java)
         initView()
         loadBetFromFirebase()
-        countCartFromFirebase()
+       // countCartFromFirebase()
     }
 
 
@@ -61,46 +61,23 @@ class CartFragment : BaseFragment() , IOddsListLisitener, ICartLoadListener  {
     @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
     public fun onUpdateCartEvent(event: UpdateCartEvent)
     {
-        countCartFromFirebase()
+       // countCartFromFirebase()
     }
 
-
-
-    private fun countCartFromFirebase() {
-        val cartModels : MutableList<CartModel> = ArrayList()
-        FirebaseDatabase.getInstance()
-            .getReference("Cart")
-            .child("UNIQUE_USER_ID")
-            .addListenerForSingleValueEvent(object: ValueEventListener{
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    for(cartSnapshot in snapshot.children){
-                        val cartModel = cartSnapshot.getValue(CartModel::class.java)
-                        cartModel!!.key = cartSnapshot.key
-                        cartModels.add(cartModel)
-                    }
-                    cartLoadListener.onLoadCartSuccess(cartModels)
-
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    cartLoadListener.onLoadCartFailed(error.message)
-
-                }
-
-            })
-    }
 
     private fun loadBetFromFirebase() {
         startProgress()
         val betModelList: MutableList<OddModel> = ArrayList()
         FirebaseDatabase.getInstance()
-            .getReference("Sports")
+            .getReference("Cart").child("1")
             .addListenerForSingleValueEvent(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if(snapshot.exists()){
                         for(betSnapshot in snapshot.children){
+                            rv_cart_list.visibility = View.VISIBLE
+                            empty_cart.visibility = View.GONE
                             val betModel = betSnapshot.getValue(OddModel::class.java)
-                            betModel!!.key = betSnapshot.key
+                            betModel!!.sport_key = betSnapshot.key
                             betModelList.add(betModel)
                         }
                         oddListener.onBetLoadSuccess(betModelList)

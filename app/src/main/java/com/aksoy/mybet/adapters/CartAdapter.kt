@@ -6,21 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.aksoy.mybet.R
-import com.aksoy.mybet.eventbus.UpdateCartEvent
 import com.aksoy.mybet.listeners.ICartLoadListener
-import com.aksoy.mybet.models.CartModel
 import com.aksoy.mybet.models.OddModel
-import com.aksoy.mybet.models.response.OddsResponse
 import com.aksoy.mybet.utils.IRecyclerClickListener
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.rv_cart_item.view.away_team
-import kotlinx.android.synthetic.main.rv_cart_item.view.away_team_odd
-import kotlinx.android.synthetic.main.rv_cart_item.view.home_team
-import kotlinx.android.synthetic.main.rv_cart_item.view.home_team_odd
-import org.greenrobot.eventbus.EventBus
+import kotlinx.android.synthetic.main.rv_cart_item.view.*
+
 
 class CartAdapter (
     val context: Context, private val list: List<OddModel>,private val cartLoadListener: ICartLoadListener
@@ -42,70 +35,24 @@ class CartAdapter (
     override fun onBindViewHolder(holder: CartViewHolder, position: Int) {
 
         holder.view.home_team.text = list[position].homeTeam
-        holder.view.home_team_odd.text = list[position].homeTeamOdd.toString()
+        holder.view.home_team_odd.text = list[position].homeTeamPrice.toString()
         holder.view.away_team.text = list[position].awayTeam
-        holder.view.away_team_odd.text = list[position].awayTeamOdd.toString()
-        holder.view.setOnClickListener(object: IRecyclerClickListener,
-            View.OnClickListener {
-            override fun onItemClickListener(view: View?, position: Int) {
-                addToCart(list[position])
-            }
-
-            override fun onClick(v: View?) {
-                clickListener?.onItemClickListener(v,position)
-            }
-
-        })
+        holder.view.away_team_odd.text = list[position].awayTeamPrice.toString()
+        holder.view.delete_the_odd.setOnClickListener{
+            deleteData(list)
+        }
 
     }
-    private fun addToCart(oddsModel: OddModel) {
-        val userCart = FirebaseDatabase.getInstance()
-            .getReference("Cart")
-            .child("UNIQUE_USER_ID")
-        userCart.child(oddsModel.key!!)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    if(snapshot.exists()){
-                        val cartModel = snapshot.getValue(CartModel::class.java)
-                        val updateDate: MutableMap<String, Any> = HashMap()
-                        cartModel?.quantity = cartModel!!.quantity + 1
-                        updateDate["quantity"] = cartModel!!.quantity
-                        updateDate["totalPrice"] = cartModel!!.quantity + cartModel.price.toFloat()
-                        userCart.child(oddsModel.key!!)
-                            .updateChildren(updateDate)
-                            .addOnSuccessListener {
-                                EventBus.getDefault().postSticky(UpdateCartEvent())
-                                cartLoadListener.onLoadCartFailed("Success add to cart")
-                            }
-                            .addOnFailureListener { e -> cartLoadListener.onLoadCartFailed(e.message)
-                            }
-                    }else {
-                        val cartModel = CartModel()
-                        cartModel.key = oddsModel.key
-                        cartModel.awayTeam = oddsModel.awayTeam
-                        cartModel.homeTeam = oddsModel.homeTeam
-                        cartModel.homeTeamOdd = oddsModel.homeTeamOdd
-                        cartModel.awayTeamOdd = oddsModel.awayTeamOdd
-                        cartModel.price = oddsModel.price!!
-                        cartModel.quantity = 1
-                        cartModel.totalPrice = oddsModel.price!!.toFloat()
-                        userCart.child(oddsModel.key!!)
-                            .setValue(cartModel)
-                            .addOnSuccessListener {
-                                EventBus.getDefault().postSticky(UpdateCartEvent())
-                                cartLoadListener.onLoadCartFailed("Success add to cart")
-                            }
-                            .addOnFailureListener { e-> cartLoadListener.onLoadCartFailed(e.message) }
 
-                    }
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    cartLoadListener.onLoadCartFailed(error.message)
-                }
-
-            })
+    private fun deleteData(list: List<OddModel>) {
+        var mPostReference: DatabaseReference
+        var cartUid =  0
+        cartUid = cartUid.inc()
+        mPostReference = FirebaseDatabase.getInstance().reference
+            .child("Cart").child("1").child(cartUid.toString());
+        mPostReference.removeValue()
     }
+
 
     override fun getItemCount(): Int {
         return list.size

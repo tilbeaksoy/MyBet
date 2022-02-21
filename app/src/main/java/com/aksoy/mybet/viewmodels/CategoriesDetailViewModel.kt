@@ -17,8 +17,6 @@ class CategoriesDetailViewModel : ViewModel() {
         viewModelScope.launch {
             val response = apiServices.getSportsOdds(sportKey)
             if (response.isSuccessful) {
-                val gson = Gson()
-                Log.i("value", "--> " + gson.toJson(response.body()))
                 sportOddsResponse.postValue(response.body())
             }
         }

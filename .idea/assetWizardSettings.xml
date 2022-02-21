@@ -24,7 +24,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="C:\Users\tilbe.aksoy\AppData\Local\Temp\baseline_add_circle_outline_24.xml" />
+                                                <entry key="imagePath" value="C:\Users\tilbe.aksoy\AppData\Local\Temp\baseline_delete_24.xml" />
                                                 <entry key="opacityPercent" value="80" />
                                               </map>
                                             </option>
@@ -36,7 +36,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/add_circle_outline/baseline_add_circle_outline_24.xml" />
+                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/delete/baseline_delete_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -82,7 +82,7 @@
                                   <option name="values">
                                     <map>
                                       <entry key="imageAsset" value="C:\Users\tilbe.aksoy\Downloads\live.png" />
-                                      <entry key="outputName" value="ic_add_to_chart" />
+                                      <entry key="outputName" value="ic_delete" />
                                       <entry key="theme" value="CUSTOM" />
                                       <entry key="themeColor" value="008000" />
                                     </map>

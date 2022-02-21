@@ -20,11 +20,6 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical">
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/img_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/left_arrow" />
             <TextView
                 android:id="@+id/tv_home_name"
                 android:layout_width="match_parent"
@@ -60,15 +55,10 @@
             android:orientation="vertical"
             android:gravity="center">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/img_close"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:background="@drawable/ic_cancel_dark" />
             <TextView
                 android:id="@+id/tv_away_name"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Misafir"
                 android:textColor="#4D566E"
@@ -91,6 +81,7 @@
         app:cardCornerRadius="8dp"
         android:layout_marginEnd="20dp"
         android:layout_height="50dp">
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/cart_image"
             android:src="@drawable/ic_cart"

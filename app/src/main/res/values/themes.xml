@@ -10,13 +10,32 @@
         <item name="colorSecondaryVariant">@color/theme_dark</item>
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">@color/theme_dark</item>
-
-
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
+        <!-- Customize your theme here. -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:autofilledHighlight">@android:color/transparent</item>
+        <item name="android:forceDarkAllowed">false</item>
 
 
         <!-- Customize your theme here. -->
     </style>
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <!-- Gets rid of the search icon -->
+        <!--        <item name="searchIcon">@null</item>-->
+        <!-- Gets rid of the "underline" in the text -->
+        <item name="queryBackground">@color/theme</item>
+        <item name="background">@color/white</item>
+        <!-- Gets rid of the search icon when the SearchView is expanded -->
+        <item name="searchHintIcon">@null</item>
+        <!-- The hint text that appears when the user has not typed anything -->
+        <item name="queryHint">"Aramak istediğiniz ligi yazınız"</item>
+        <item name="android:queryHint">@string/search_photos</item>
+        <item name="android:background">@drawable/background_search</item>
+        <!--        <item name="closeIcon">@drawable/ic_clo</item>-->
+        <item name="android:textColor">@color/theme</item>
+        <item name="android:textColorSecondary">@color/theme_dark</item>
+    </style>
+
     <style name="SplashTheme" parent ="Theme.MyBet">
         <item name="android:windowBackground"></item>
     </style>
@@ -24,4 +43,5 @@
         <item name="neumorph_cornerFamily">rounded</item>
         <item name="neumorph_cornerSize">7dp</item>
     </style>
-</resources>
+
+    <string name="search_photos">Aranıyor</string></resources>

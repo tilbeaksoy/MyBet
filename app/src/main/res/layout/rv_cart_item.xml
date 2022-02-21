@@ -20,12 +20,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:orientation="vertical"
+                android:orientation="horizontal"
                 >
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/delete_the_odd"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/ic_delete"
+                    android:layout_gravity="center"/>
                 <LinearLayout
                     android:id="@+id/ll_categories"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
+                    android:layout_marginStart="20dp"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -90,6 +99,7 @@
                                 android:maxLines="1"
                                 android:text="3.40" />
                         </LinearLayout>
+
 
                     </LinearLayout>
                 </LinearLayout>
