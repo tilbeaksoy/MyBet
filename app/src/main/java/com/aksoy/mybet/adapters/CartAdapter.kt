@@ -6,26 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.aksoy.mybet.R
-import com.aksoy.mybet.listeners.ICartLoadListener
 import com.aksoy.mybet.models.OddModel
-import com.aksoy.mybet.utils.IRecyclerClickListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.rv_cart_item.view.*
 
 
 class CartAdapter (
-    val context: Context, private val list: List<OddModel>,private val cartLoadListener: ICartLoadListener
-): RecyclerView.Adapter<CartAdapter.CartViewHolder>(){
+    val context: Context, private val list: List<OddModel>): RecyclerView.Adapter<CartAdapter.CartViewHolder>(){
 
     class CartViewHolder(var view: View) : RecyclerView.ViewHolder(view)
-
-    private var clickListener: IRecyclerClickListener? = null
-
-    fun setClickListener(clickListener: IRecyclerClickListener){
-        this.clickListener = clickListener
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -39,17 +29,18 @@ class CartAdapter (
         holder.view.away_team.text = list[position].awayTeam
         holder.view.away_team_odd.text = list[position].awayTeamPrice.toString()
         holder.view.delete_the_odd.setOnClickListener{
-            deleteData(list)
+            deleteData()
         }
 
     }
 
-    private fun deleteData(list: List<OddModel>) {
+    private fun deleteData() {
         var mPostReference: DatabaseReference
-        var cartUid =  0
-        cartUid = cartUid.inc()
+        var mPostDatabase: FirebaseDatabase
+        val auth = FirebaseAuth.getInstance()
+        var uid = auth.currentUser?.uid.toString()
         mPostReference = FirebaseDatabase.getInstance().reference
-            .child("Cart").child("1").child(cartUid.toString());
+            .child("Cart").child("1").child(uid);
         mPostReference.removeValue()
     }
 

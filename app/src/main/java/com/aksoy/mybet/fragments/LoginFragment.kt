@@ -1,9 +1,7 @@
 package com.aksoy.mybet.fragments
 
-import android.app.ProgressDialog
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.text.TextUtils
 import android.util.Patterns
 import androidx.fragment.app.Fragment
@@ -13,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
 import com.aksoy.mybet.R
-import com.aksoy.mybet.viewmodels.LoginViewModel
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.login_button
@@ -25,7 +22,6 @@ class LoginFragment : Fragment(), View.OnClickListener {
         fun newInstance() = LoginFragment()
     }
 
-    private lateinit var viewModel: LoginViewModel
     private var email = ""
     private var password = ""
 
@@ -40,7 +36,6 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
         firebaseAuth = FirebaseAuth.getInstance()
         initView()
 

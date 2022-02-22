@@ -13,7 +13,6 @@ import com.aksoy.mybet.listeners.IOddsListLisitener
 import com.aksoy.mybet.models.CartModel
 import com.aksoy.mybet.models.OddModel
 import com.aksoy.mybet.utils.BaseFragment
-import com.aksoy.mybet.viewmodels.CartViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -26,7 +25,6 @@ import org.greenrobot.eventbus.ThreadMode
 
 class CartFragment : BaseFragment() , IOddsListLisitener, ICartLoadListener  {
 
-    private lateinit var viewModel: CartViewModel
     private lateinit var oddListener: IOddsListLisitener
     private lateinit var cartLoadListener: ICartLoadListener
     override fun onStart() {
@@ -50,7 +48,6 @@ class CartFragment : BaseFragment() , IOddsListLisitener, ICartLoadListener  {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CartViewModel::class.java)
         initView()
         loadBetFromFirebase()
        // countCartFromFirebase()
@@ -102,7 +99,7 @@ class CartFragment : BaseFragment() , IOddsListLisitener, ICartLoadListener  {
     }
     override fun onBetLoadSuccess(betModelList: List<OddModel>) {
         dismissProgress()
-        val adapter = CartAdapter(requireContext(), betModelList,cartLoadListener)
+        val adapter = CartAdapter(requireContext(), betModelList)
         rv_cart_list.adapter = adapter
     }
 

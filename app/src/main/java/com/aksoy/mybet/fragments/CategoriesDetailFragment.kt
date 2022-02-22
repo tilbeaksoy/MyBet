@@ -67,7 +67,7 @@ class CategoriesDetailFragment : BaseFragment(), ICartLoadListener {
         viewModel.sportOddsResponse.observe(viewLifecycleOwner, { response ->
             response?.let {
                 dismissProgress()
-                val  oddsAdapter = OddsAdapter(response,cartLoadListener)
+                val  oddsAdapter = OddsAdapter(response)
                 rv_odd_list.adapter = oddsAdapter
             }
         })

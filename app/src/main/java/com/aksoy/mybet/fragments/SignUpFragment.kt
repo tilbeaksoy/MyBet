@@ -1,17 +1,13 @@
 package com.aksoy.mybet.fragments
 
-import android.os.Binder
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Patterns
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
 import com.aksoy.mybet.R
-import com.aksoy.mybet.models.User
 import com.aksoy.mybet.utils.AlertDialogType
 import com.aksoy.mybet.utils.BaseFragment
 import com.aksoy.mybet.utils.SelectListener
